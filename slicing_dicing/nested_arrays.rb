@@ -5,6 +5,8 @@ values = [
 ]
 
 # Print the array in ascending order of the sum of each nested array
+sum = values.each do array
+  array.inject {}
 # Print the 2nd element of the array
 # Remove the last element of the array and print
 

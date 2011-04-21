@@ -40,6 +40,11 @@ invoices = [
 
 total = invoices.inject(0) do |sum, the_hash|
   # Sum of all invoice line items in invoices
+  sum + the_hash[:invoices].inject(0) do |inner_sum, invoice|
+    inner_sum + invoice.line_items.inject(0) do |third_sum, item|
+      third_sum + item.amount
+    end
+  end
 end
 
 puts total

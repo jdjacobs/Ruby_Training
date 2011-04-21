@@ -2,11 +2,12 @@ class Invoice
   attr_accessor :line_items
 
   def initialize(line_items)
-    @line_items = line_item
+    @line_items = line_items
   end
   
   def total_amount
     # You need to implement this method
+    self.inject { |sum, item| sum + item}
   end
 end
 
@@ -27,5 +28,6 @@ invoices = [
 # Process the invoices array with collect and return an array with 3 Invoice
 # objects (containing line items) within it
 
+puts collection = invoices.collect { Invoice.new(:line_items) }
 
 # Now sort the array by the invoices total line item amount and print
