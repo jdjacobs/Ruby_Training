@@ -2,7 +2,7 @@ class Invoice
   attr_accessor :line_items
 
   def initialize(line_items)
-    @line_items = line_item
+    @line_items = line_items
   end
 end
 
@@ -22,4 +22,16 @@ invoices = [
 
 # Process the invoices array with map and return an array with 3 Invoice
 # objects (containing line items) within it
+new_invoices = invoices.map do |the_array|
+  Invoice.new(
+    the_array.map do |num|
+      LineItem.new(num)
+    end
+  )
+end
 
+puts new_invoices
+
+new_invoices.each do |inv|
+  puts inv.line_items
+end

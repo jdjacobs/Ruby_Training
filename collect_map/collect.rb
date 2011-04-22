@@ -1,25 +1,48 @@
-class Invoice
-  attr_accessor :line_items
+require 'rubygems'
+require 'active_support/inflector'
 
-  def initialize(line_items)
-    @line_items = line_item
+class Artist
+  attr_accessor :records
+
+  def initialize(records)
+    @records = records
   end
+
 end
 
-class LineItem
-  attr_accessor :amount
+class Record
+  attr_accessor :title
 
-  def initialize(amount)
-    @amount = amount
+  def initialize(title)
+    @title = title
   end
+
+  def pretty_title
+    @title.titleize
+  end
+  
+  def to_s
+    self.pretty_title
+  end
+
 end
 
-invoices = [
-  [4, 7.5, 3],
-  [7, 8, 9, 10],
-  [1.5, 3.4, 5]
+artists = [
+  ["southside", "shitty techno"],
+  ["More techo"],
+  ["Blar-X", "Hi", "Mishmash"]
 ]
 
-# Process the invoices array with collect and return an array with 3 Invoice
-# objects (containing line items) within it
+new_artists = artists.collect do |record_titles|
+  Artist.new(
+    record_titles.collect do |title|
+      title[0..2]
+    end
+  )
+end
 
+puts new_artists
+
+new_artists.each do |artist|
+  puts artist.records
+end
