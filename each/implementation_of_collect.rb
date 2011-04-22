@@ -8,6 +8,7 @@ class LineItem
 end
 
 class Array
+  # Build up a new array out of the return value of each block call
   def super_collect(&blk)
     i = 0
     new_array = [] # initialize the new array
